@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>跳动·涵杉99</title>
+    <title>涵杉99</title>
     <style>
         * {
             margin: 0;
@@ -31,7 +31,7 @@
             right: 0;
             text-align: center;
             font-family: "Microsoft YaHei", "PingFang SC", "SimHei", sans-serif;
-            font-size: 10px;     /* 缩小字体 */
+            font-size: 10px;
             color: rgba(255, 255, 255, 0.6);
             background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(4px);
@@ -58,16 +58,14 @@
             const canvas = document.getElementById('myCanvas');
             const ctx = canvas.getContext('2d');
 
-            // 文本已修正为“涵杉99”
+            // 要显示的文本
             const text = '涵杉99';
 
-            // 文本对象数组
             let particles = [];
 
-            // 清晰数量：30个
-            const PARTICLE_COUNT = 30;
+            // 增加跳动数量：从30提升到55，更饱满但保持可读性
+            const PARTICLE_COUNT = 55;
 
-            // 动画时间相关
             let time = 0;
             const SPEED_FACTOR = 0.02;
 
@@ -76,13 +74,14 @@
                 for (let i = 0; i < PARTICLE_COUNT; i++) {
                     const baseX = 20 + Math.random() * (width - 40);
                     const baseY = 20 + Math.random() * (height - 40);
-                    const fontSize = 24 + Math.floor(Math.random() * 40);
+                    // 稍微缩小字体范围上限，避免过于拥挤时大字重叠严重 (20px ~ 52px)
+                    const fontSize = 20 + Math.floor(Math.random() * 33);
                     const hue = Math.floor(Math.random() * 360);
-                    const color = `hsl(${hue}, 90%, 65%)`;
-                    const ampX = 10 + Math.random() * 30;
-                    const ampY = 15 + Math.random() * 35;
-                    const freqX = 0.5 + Math.random() * 1.5;
-                    const freqY = 0.5 + Math.random() * 1.5;
+                    const color = `hsl(${hue}, 85%, 60%)`;
+                    const ampX = 8 + Math.random() * 28;
+                    const ampY = 12 + Math.random() * 32;
+                    const freqX = 0.4 + Math.random() * 1.6;
+                    const freqY = 0.4 + Math.random() * 1.6;
                     const phaseX = Math.random() * Math.PI * 2;
                     const phaseY = Math.random() * Math.PI * 2;
 
@@ -119,10 +118,10 @@
 
                     ctx.font = `bold ${p.fontSize}px "Microsoft YaHei", "PingFang SC", "SimHei", sans-serif`;
                     ctx.fillStyle = p.color;
-                    ctx.shadowColor = 'rgba(255,255,255,0.3)';
-                    ctx.shadowBlur = 8;
-                    ctx.shadowOffsetX = 2;
-                    ctx.shadowOffsetY = 2;
+                    ctx.shadowColor = 'rgba(255,255,255,0.25)';
+                    ctx.shadowBlur = 6;
+                    ctx.shadowOffsetX = 1;
+                    ctx.shadowOffsetY = 1;
                     ctx.textAlign = 'center';
                     ctx.textBaseline = 'middle';
                     ctx.fillText(text, x, y);
